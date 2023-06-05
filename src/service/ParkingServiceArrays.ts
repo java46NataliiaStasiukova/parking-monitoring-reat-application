@@ -1,4 +1,3 @@
-import React from "react";
 import ParkingService from "./ParkingService";
 import { CarModel } from "../models/CarModel";
 import { DriverModel } from "../models/DriverModel";
@@ -6,10 +5,19 @@ import { ReportModel } from "../models/ReportModel";
 
 export default class ParkingServiceArrays implements ParkingService {
 
+    cars: Map<number, CarModel> = new Map<number, CarModel>;
+    drivers: Map<number, DriverModel> = new Map<number, DriverModel>;
+    reports: Map<number, ReportModel> = new Map<number, ReportModel>;
 
-    cars: Map<bigint, CarModel> = new Map<bigint, CarModel>;
-    drivers: Map<bigint, DriverModel> = new Map<bigint, DriverModel>;
-    reports: Map<bigint, ReportModel> = new Map<bigint, ReportModel>;
+    getAllCars(): CarModel[] {
+        return Array.from(this.cars.values());
+    }
+    getAllDrivers(): DriverModel[] {
+        return Array.from(this.drivers.values());
+    }
+    getAllReports(): ReportModel[] {
+        return Array.from(this.reports.values());
+    }
 
     addCar(car: CarModel): CarModel | null {
         let res = null;
@@ -35,89 +43,89 @@ export default class ParkingServiceArrays implements ParkingService {
         }
         return res;
     }
-    updateCar(carNumber: bigint, driverId: bigint): String {
+    updateCar(carNumber: number, driverId: number): String {
         let res = `car with number: ${carNumber} not exist`;
         let car = this.cars.get(carNumber);
-        if(car != undefined){
+        if(car !== undefined){
             car.driverId = driverId;
             this.cars.set(carNumber, car);
             res = `car with number: ${carNumber} was updated`;
         }
         return res;
     }
-    updateDriver(driverId: bigint, email: String): String {
+    updateDriver(driverId: number, email: String): String {
         let res = `driver with id: ${driverId} not exist`;
         let driver = this.drivers.get(driverId);
-        if(driver != undefined){
+        if(driver !== undefined){
             driver.email = email;
             this.drivers.set(driverId, driver);
             res = `driver with id: ${driverId} was updated`;
         }
         return res;
     }
-    updateReport(reportId: bigint, status: String): String {
+    updateReport(reportId: number, status: String): String {
         let res = `report with id: ${reportId} not exist`;
         let report = this.reports.get(reportId);
-        if(report != undefined){
+        if(report !== undefined){
             report.status = status;
             this.reports.set(reportId, report);
             res = `report with id: ${reportId} was updated`;
         }
         return res;
     }
-    getCar(carNumber: bigint): CarModel | null{
+    getCar(carNumber: number): CarModel | null{
         let res = null;
         let car = this.cars.get(carNumber);
-        if(car != undefined){
+        if(car !== undefined){
             res = car;
         }
         return res;
     }
-    getDriver(driverId: bigint): DriverModel | null {
+    getDriver(driverId: number): DriverModel | null {
         let res = null;
         let driver = this.drivers.get(driverId);
-        if(driver != undefined){
+        if(driver !== undefined){
             res = driver;
         }
         return res;
     }
-    getReport(reportId: bigint): ReportModel | null {
+    getReport(reportId: number): ReportModel | null {
         let res = null;
         let report = this.reports.get(reportId);
-        if(report != undefined){
+        if(report !== undefined){
             res = report
         }
         return res;
     }
 
-    deleteCar(carNumber: bigint): String {
+    deleteCar(carNumber: number): String {
         let res = `car with number: ${carNumber} not exist`;
         let car = this.cars.get(carNumber);
-        if(car != undefined){
+        if(car !== undefined){
             this.cars.delete(carNumber);
             res = `car with number: ${carNumber} was removed`;
         }
         return res;
     }
-    deleteDriver(driverId: bigint): String {
+    deleteDriver(driverId: number): String {
         let res = `driver with id: ${driverId} not exist`;
         let driver = this.drivers.get(driverId);
-        if(driver != undefined){
+        if(driver !== undefined){
             this.drivers.delete(driverId);
             res = `driver with id: ${driverId} was removed`;
         }
         return res;
     }
-    deleteReport(reportId: bigint): String {
+    deleteReport(reportId: number): String {
         let res = `report with id: ${reportId} not exist`;
         let report = this.reports.get(reportId);
-        if(report != undefined){
+        if(report !== undefined){
             this.reports.delete(reportId);
             res = `report with id: ${reportId} was removed`;
         }
         return res;
     }
-    getDriverByCarNumber(carNumber: bigint): String {
+    getDriverByCarNumber(carNumber: number): String {
         throw new Error("Method not implemented.");
     }
     getReportsByMonth(year: number, month: number): ReportModel[] {
@@ -126,19 +134,19 @@ export default class ParkingServiceArrays implements ParkingService {
     getReportsByAge(age: number): ReportModel[] {
         throw new Error("Method not implemented.");
     }
-    getReportsByDriverId(driverId: bigint): ReportModel[] {
+    getReportsByDriverId(driverId: number): ReportModel[] {
         throw new Error("Method not implemented.");
     }
-    getReportsByCarNumber(carNumber: bigint): ReportModel[] {
+    getReportsByCarNumber(carNumber: number): ReportModel[] {
         throw new Error("Method not implemented.");
     }
     getCanceledReports(): ReportModel[] {
         throw new Error("Method not implemented.");
     }
-    getCanceledReportsByCarNumber(carNumber: bigint): ReportModel[] {
+    getCanceledReportsByCarNumber(carNumber: number): ReportModel[] {
         throw new Error("Method not implemented.");
     }
-    getNotPaidReportsByCarNumber(carNumber: bigint): ReportModel[] {
+    getNotPaidReportsByCarNumber(carNumber: number): ReportModel[] {
         throw new Error("Method not implemented.");
     }
     

@@ -1,0 +1,7 @@
+{
+    "name": ["Yakov", "Sara", "Avraham", "Rivka", "Daniel", "Golda", "Itshak"],
+    "minDriverId": 10000,
+    "maxDriverId": 99999,
+    "minAge": 19,
+    "maxAge": 85
+}

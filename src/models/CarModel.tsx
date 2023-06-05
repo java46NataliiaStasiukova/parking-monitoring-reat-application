@@ -1,6 +1,10 @@
 import React from "react";
 
 export type CarModel = {
-    carNumber: bigint;
-    driverId: bigint;
+    carNumber: number;
+    driverId: number;
+}
+
+export function createCar(carNumber: number, driverId: number): CarModel{
+    return {carNumber, driverId};
 }

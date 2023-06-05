@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { RouteType } from "../../models/RouteTypes";
+import { RouteTypes } from "../../models/RouteTypes";
 
-const Navigator: React.FC<{items: RouteType[]}> = ({items}) => {
+
+const Navigator: React.FC<{items: RouteTypes[]}> = ({items}) => {
 
     function getLinks(): React.ReactNode {
         return items.map(item => <Link to={item.path} key={item.path}>{item.label}</Link>)

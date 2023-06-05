@@ -1,0 +1,5 @@
+{
+    "minYear": 2018,
+    "maxYear": 2022,
+    "status": ["paid", "not-paid", "canceled"]
+}

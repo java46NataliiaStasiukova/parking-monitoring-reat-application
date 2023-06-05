@@ -1,0 +1,63 @@
+import React, { useEffect } from "react";
+import { range } from "../../util/functions";
+import { getRandomCar } from "../../util/randomCar";
+import driverData from '../../config/driverData.json';
+import parkingData from '../../config/parkingData.json';
+import reportData from '../../config/reportData.json';
+import { parkingService } from "../../config/service-config";
+import { getRandomDriver } from "../../util/randomDriver";
+import { getRandomReport } from "../../util/randomReport";
+
+const options = ["cars", "drivers", "reports", "parkingZones"];
+const INPUT_GENERATION_ID = "input-generation-id"
+const SELECT_GENERATION_ID = "select-generation-id"
+let inputAmount: any;
+let inputOption: any;
+const RandomGeneration: React.FC = () => {
+
+    function onInput(){
+        const amount: number = +inputAmount.value;
+        const selectedOption: String = inputOption.value;
+        switch(selectedOption) {
+            case "cars": generateCars(amount); break;
+            case "drivers": generateDrivers(amount); break;
+            case "reports": generateReports(amount); break;
+            case "parkingZones": generateParkingZones(amount); break;
+            default: break;
+        }
+    }
+
+    function generateCars(amount: number){
+        range(0, amount).forEach(i => parkingService.addCar(getRandomCar(driverData)));
+    }
+
+    function generateDrivers(amount: number){
+        range(0, amount).forEach(i => parkingService.addDriver(getRandomDriver(driverData)));
+    }
+
+    function generateReports(amount: number){
+        range(0, amount).forEach(i => parkingService.addReport(getRandomReport(driverData, parkingData, reportData)));
+    }
+
+    function generateParkingZones(amount: number){
+        //TODO
+    }
+
+    useEffect(() => {
+        inputAmount = document.getElementById(INPUT_GENERATION_ID);
+        inputOption = document.getElementById(SELECT_GENERATION_ID);
+    })
+
+    return <>
+    <div>Random Generation Page
+        <input id={INPUT_GENERATION_ID} type="number" />
+        <select id={SELECT_GENERATION_ID} name="destination">
+        {options.map((o, i)=> <option value={o} key={i}>{o}</option>)}
+          
+        </select>
+        <button onClick={onInput}>Generate</button>
+    </div>
+    </>
+}
+
+export default RandomGeneration;
