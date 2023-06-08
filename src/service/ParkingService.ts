@@ -1,5 +1,6 @@
 import { CarModel } from "../models/CarModel";
 import { DriverModel } from "../models/DriverModel";
+import { NotificationDataModel } from "../models/NotificationDataModel";
 import { ReportModel } from "../models/ReportModel";
 
 export default interface ParkingService {
@@ -32,5 +33,7 @@ export default interface ParkingService {
     getCanceledReports(): ReportModel[];
     getCanceledReportsByCarNumber(carNumber: number): ReportModel[];
     getNotPaidReportsByCarNumber(carNumber: number): ReportModel[];
+
+    getNotificationData(carNumber: number): NotificationDataModel | null;
 
 }

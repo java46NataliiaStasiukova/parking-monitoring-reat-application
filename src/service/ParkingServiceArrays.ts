@@ -2,12 +2,14 @@ import ParkingService from "./ParkingService";
 import { CarModel } from "../models/CarModel";
 import { DriverModel } from "../models/DriverModel";
 import { ReportModel } from "../models/ReportModel";
+import { NotificationDataModel } from "../models/NotificationDataModel";
+import { createNotificationData } from "../models/NotificationDataModel";
 
 export default class ParkingServiceArrays implements ParkingService {
 
-    cars: Map<number, CarModel> = new Map<number, CarModel>;
-    drivers: Map<number, DriverModel> = new Map<number, DriverModel>;
-    reports: Map<number, ReportModel> = new Map<number, ReportModel>;
+    cars: Map<number, CarModel> = new Map<number, CarModel>();
+    drivers: Map<number, DriverModel> = new Map<number, DriverModel>();
+    reports: Map<number, ReportModel> = new Map<number, ReportModel>();
 
     getAllCars(): CarModel[] {
         return Array.from(this.cars.values());
@@ -126,7 +128,15 @@ export default class ParkingServiceArrays implements ParkingService {
         return res;
     }
     getDriverByCarNumber(carNumber: number): String {
-        throw new Error("Method not implemented.");
+        let res = `driver for car: ${carNumber} not exist`;
+        let car = this.cars.get(carNumber);
+        if(car !== undefined){
+            let driver = this.drivers.get(car.driverId);
+            if(driver != undefined){
+                res = `found driver: ${JSON.stringify(driver)}`;
+            }
+        }
+        return res;
     }
     getReportsByMonth(year: number, month: number): ReportModel[] {
         throw new Error("Method not implemented.");
@@ -148,6 +158,19 @@ export default class ParkingServiceArrays implements ParkingService {
     }
     getNotPaidReportsByCarNumber(carNumber: number): ReportModel[] {
         throw new Error("Method not implemented.");
+    }
+
+    getNotificationData(carNumber: number): NotificationDataModel | null{
+        let res = null;
+        let car = this.cars.get(carNumber);
+        if(car !== undefined){
+            let driver = this.drivers.get(car.driverId);
+            if(driver != undefined){
+                res = createNotificationData(carNumber, driver.email,
+                    driver.name, driver.id);
+            }
+        }
+        return res;
     }
     
 }

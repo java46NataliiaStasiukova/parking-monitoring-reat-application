@@ -4,9 +4,10 @@ import { getRandomCar } from "../../util/randomCar";
 import driverData from '../../config/driverData.json';
 import parkingData from '../../config/parkingData.json';
 import reportData from '../../config/reportData.json';
-import { parkingService } from "../../config/service-config";
+import { parkingService, parkingZonesService } from "../../config/service-config";
 import { getRandomDriver } from "../../util/randomDriver";
 import { getRandomReport } from "../../util/randomReport";
+import { getRandomParkingZone } from "../../util/randomParkingZone";
 
 const options = ["cars", "drivers", "reports", "parkingZones"];
 const INPUT_GENERATION_ID = "input-generation-id"
@@ -40,7 +41,7 @@ const RandomGeneration: React.FC = () => {
     }
 
     function generateParkingZones(amount: number){
-        //TODO
+        range(0, amount).forEach(i => parkingZonesService.addParkingZone(getRandomParkingZone(parkingData)));
     }
 
     useEffect(() => {

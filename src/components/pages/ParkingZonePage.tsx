@@ -1,10 +1,14 @@
 import React from "react";
+import { parkingZonesService } from "../../config/service-config";
+
 
 const ParkingZonePage: React.FC = () => {
 
 
     return <>
-    <div>Parking Zone Page</div>
+    <div>
+        <ul>{parkingZonesService.getAllParkingZones().map(c => <li key={c.fineCost}>{JSON.stringify(c)}</li>)}</ul>
+    </div>
     </>
 }
 
