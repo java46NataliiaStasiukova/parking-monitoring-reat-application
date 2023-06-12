@@ -4,10 +4,11 @@ import { getRandomCar } from "../../util/randomCar";
 import driverData from '../../config/driverData.json';
 import parkingData from '../../config/parkingData.json';
 import reportData from '../../config/reportData.json';
-import { parkingService, parkingZonesService } from "../../config/service-config";
 import { getRandomDriver } from "../../util/randomDriver";
 import { getRandomReport } from "../../util/randomReport";
 import { getRandomParkingZone } from "../../util/randomParkingZone";
+import { useDispatch } from "react-redux";
+import { addCar, addDriver, addParkingZone, addReport } from "../../redux/actions";
 
 const options = ["cars", "drivers", "reports", "parkingZones"];
 const INPUT_GENERATION_ID = "input-generation-id"
@@ -15,6 +16,8 @@ const SELECT_GENERATION_ID = "select-generation-id"
 let inputAmount: any;
 let inputOption: any;
 const RandomGeneration: React.FC = () => {
+
+    const dispatch = useDispatch();
 
     function onInput(){
         const amount: number = +inputAmount.value;
@@ -29,19 +32,19 @@ const RandomGeneration: React.FC = () => {
     }
 
     function generateCars(amount: number){
-        range(0, amount).forEach(i => parkingService.addCar(getRandomCar(driverData)));
+        range(0, amount).forEach(i => dispatch(addCar(getRandomCar(driverData))));
     }
 
     function generateDrivers(amount: number){
-        range(0, amount).forEach(i => parkingService.addDriver(getRandomDriver(driverData)));
+        range(0, amount).forEach(i => dispatch(addDriver(getRandomDriver(driverData))));
     }
 
     function generateReports(amount: number){
-        range(0, amount).forEach(i => parkingService.addReport(getRandomReport(driverData, parkingData, reportData)));
+        range(0, amount).forEach(i => dispatch(addReport(getRandomReport(driverData, parkingData, reportData))));
     }
 
     function generateParkingZones(amount: number){
-        range(0, amount).forEach(i => parkingZonesService.addParkingZone(getRandomParkingZone(parkingData)));
+        range(0, amount).forEach(i => dispatch(addParkingZone(getRandomParkingZone(parkingData))));
     }
 
     useEffect(() => {

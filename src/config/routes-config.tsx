@@ -8,6 +8,8 @@ import RandomGeneration from "../components/pages/RandomGeneration";
 import DriversPage from "../components/pages/DriversPage";
 import ReportsPage from "../components/pages/ReportsPage";
 import ParkingZonePage from "../components/pages/ParkingZonePage";
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
 
 
 
@@ -22,12 +24,12 @@ export const LOGOUT_PATH = '/logout';
 export const ERROR_PATH = '*';
 
 export const ROUTES:RouteTypes[] = [
-    {path: HOME_PAGE_PATH, label: 'Home Page', element: <HomePage/>},
-    {path: CARS_PATH, label: 'Cars', element: <CarsPage/>},
-    {path: DRIVERS_PATH, label: 'Drivers', element: <DriversPage/>},
-    {path: REPORTS_PATH, label: 'Reports', element: <ReportsPage/>},
-    {path: PARKING_ZONES, label: 'ParkingZones', element: <ParkingZonePage/>},
-    {path: RANDOM_GENERATION, label: 'RandomGeneration', element: <RandomGeneration/>},
+    {path: HOME_PAGE_PATH, label: 'Home Page', element: <Provider store={store}> <HomePage/> </Provider>},
+    {path: CARS_PATH, label: 'Cars', element: <Provider store={store}><CarsPage/></Provider> },
+    {path: DRIVERS_PATH, label: 'Drivers', element: <Provider store={store}><DriversPage/></Provider>},
+    {path: REPORTS_PATH, label: 'Reports', element: <Provider store={store}><ReportsPage/></Provider>},
+    {path: PARKING_ZONES, label: 'ParkingZones', element: <Provider store={store}><ParkingZonePage/></Provider>},
+    {path: RANDOM_GENERATION, label: 'RandomGeneration', element: <Provider store={store}><RandomGeneration/></Provider>},
     {path: LOGIN_PATH, label: 'Login', element: <LoginPage/>},
     {path: LOGOUT_PATH, label: 'Logout', element: <LogoutPage/>},
     {path: ERROR_PATH, label: '', element: <ErrorPage/>}

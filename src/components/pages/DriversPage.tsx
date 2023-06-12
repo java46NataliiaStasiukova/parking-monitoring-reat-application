@@ -1,12 +1,13 @@
 import React from "react";
-import { parkingService } from "../../config/service-config";
+import { useSelector } from "react-redux";
+import { DriversStateType } from "../../redux/store";
+import { DriverModel } from "../../models/DriverModel";
 
 const DriversPage: React.FC = () => {
-
-
+    const drivers: DriverModel[] = useSelector<DriversStateType, DriverModel[]>(state => state.drivers);
     return <>
     <div>
-        <ul>{parkingService.getAllDrivers().map(c => <li key={c.id}>{JSON.stringify(c)}</li>)}</ul>
+        <ul>{drivers.map(c => <li key={c.id}>{JSON.stringify(c)}</li>)}</ul>
     </div>
     </>
 }

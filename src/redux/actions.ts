@@ -4,28 +4,21 @@ import { DriverModel } from "../models/DriverModel";
 import { ReportModel } from "../models/ReportModel";
 import { ParkingZoneModel } from "../models/ParkingZoneModel";
 
-export const GET_ALL_CARS_ACTION = "cars/get";
-export const GET_ALL_DRIVERS_ACTION = "drivers/get";
-export const GET_ALL_REPORTS_ACTION = "reports/get";
-export const GET_ALL_PARKINGZONES_ACTION = "zones/get";
 export const ADD_CAR_ACTION = "cars/add";
-export const ADD_DRIVER_ACTION = "drivers/add";
-export const ADD_REPORT_ACTION = "reports/add";
-export const ADD_PARKING_ZONE_ACTION = "zones/add";
 export const UPDATE_CAR_ACTION = "cars/update";
-export const UPDATE_DRIVER_ACTION = "drivers/update";
-export const UPDATE_REPORT_ACTION = "reports/update";
-export const UPDATE_PARKING_ZONE_ACTION = "zones/update";
 export const GET_CAR_ACTION = "car/get";
-export const GET_DRIVER_ACTION = "driver/get";
-export const GET_REPORT_ACTION = "report/get";
-export const GET_PARKING_ZONE_ACTION = "zone/get";
 export const DELETE_CAR_ACTION = "cars/delete";
-export const DELETE_DRIVER_ACTION = "drivers/delete";
-export const DELETE_REPORT_ACTION = "reports/delete";
-export const DELETE_PARKING_ZONE_ACTION = "zones/delete";
 
+export const ADD_DRIVER_ACTION = "drivers/add";
+export const UPDATE_DRIVER_ACTION = "drivers/update";
+export const GET_DRIVER_ACTION = "driver/get";
+export const DELETE_DRIVER_ACTION = "drivers/delete";
 export const GET_DRIVER_BY_CAR_NUMBER_ACTION = "drivers/getByCar";
+
+export const ADD_REPORT_ACTION = "reports/add";
+export const UPDATE_REPORT_ACTION = "reports/update";
+export const GET_REPORT_ACTION = "report/get";
+export const DELETE_REPORT_ACTION = "reports/delete";
 export const GET_REPORT_BY_MONTH_ACTION = "reports/getByMonth";
 export const GET_REPORTS_BY_AGE_ACTION = "reports/getByAge";
 export const GET_REPORTS_BY_DRIVER_ID_ACTION = "reports/getByDriver";
@@ -35,18 +28,11 @@ export const GET_CANCELED_REPORTS_BY_CAR_NUMBER_ACTION = "reports/canceledByCar"
 export const GET_NOT_PAID_REPORTS_BY_CAR_NUMBER_ACTION = "reports/notPaid"
 export const GET_NOTIFICATION_DATA_ACTION = "data/get";
 
-export function getAllCars(): PayloadAction<void> {
-    return {payload: undefined, type: GET_ALL_CARS_ACTION};
-}
-export function getAllDrivers(): PayloadAction<void> {
-    return {payload: undefined, type: GET_ALL_DRIVERS_ACTION};
-}
-export function getAllReports(): PayloadAction<void> {
-    return {payload: undefined, type: GET_ALL_REPORTS_ACTION};
-}
-export function getAllParkingZones(): PayloadAction<void> {
-    return {payload: undefined, type: GET_ALL_PARKINGZONES_ACTION};
-}
+export const ADD_PARKING_ZONE_ACTION = "zones/add";
+export const UPDATE_PARKING_ZONE_ACTION = "zones/update";
+export const GET_PARKING_ZONE_ACTION = "zone/get";
+export const DELETE_PARKING_ZONE_ACTION = "zones/delete";
+
 export function addCar(car: CarModel): PayloadAction<CarModel> {
     return {payload: car, type: ADD_CAR_ACTION};
 }
