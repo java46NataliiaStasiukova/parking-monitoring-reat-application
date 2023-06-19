@@ -1,18 +1,14 @@
 import React from 'react';
-import './App.css';
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navigator from './components/navigators/Navigator';
 import { ROUTES } from './config/routes-config';
-import { Provider } from 'react-redux';
-import { store } from './redux/store';
 import { useImitator } from './util/useImitator';
 
 
 
   const App: React.FC = () => {
 
-    //TOFIX:
-    //useImitator();
+    useImitator();
 
     const [flNavigate, setFlNavigate] = React.useState<boolean>(true);
     React.useEffect(() => setFlNavigate(false), [])

@@ -37,10 +37,11 @@ export function useImitator() {
 
 
     function action(){
-        const number = getRandomNumber(1, 100);
-        console.log("probability: " + number);
-        const imitatorAction: ImitatorAction = getAction(number);
-        const imitatorSubject: ImitatorSubject = getSubject(number);
+        const numberAction = getRandomNumber(1, 100);
+        const numberSubject = getRandomNumber(1, 100);
+        const imitatorAction: ImitatorAction = getAction(numberAction);
+        const imitatorSubject: ImitatorSubject = getSubject(numberSubject);
+        console.log(`action: ${imitatorAction.action}, subject: ${imitatorSubject.subject}`);
         switch(imitatorAction.action){
             case 'add': dispatchAdd(imitatorSubject.subject); break;
             case 'update': dispatchUpdate(imitatorSubject.subject); break;
@@ -66,12 +67,16 @@ export function useImitator() {
             case 'car': if(cars.length !== 0){
                 const index = getRandomNumber(0, cars.length - 1);
                 const carNumber = cars[index].carNumber;
-                dispatch(updateCar(carNumber, getRandomNumber(driverData.minDriverId, driverData.maxDriverId)));
+                const driverId = getRandomNumber(driverData.minDriverId, driverData.maxDriverId);
+                dispatch(updateCar(carNumber, driverId));
             }; break;
-            case 'driver': if(cars.length !== 0) {
+            case 'driver': if(drivers.length !== 0) {
                 const index = getRandomNumber(0, drivers.length - 1);
                 const driver = drivers[index];
-                dispatch(updateDriver(driver.id, `${driver.name}${getRandomNumber(0, 25)}@gmail.com`));
+                //TOFIX: driver.name
+                const email = `${driver.name}${getRandomNumber(0, 25)}@gmail.com`;
+                //const email = `${getRandomNumber(0, 25)}@gmail.com`;
+                dispatch(updateDriver(driver.id, email));
             } ;break;
             case 'report': if(reports.length !== 0) {
                 const index = getRandomNumber(0, reports.length - 1);

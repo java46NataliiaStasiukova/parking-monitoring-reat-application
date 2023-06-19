@@ -1,5 +1,5 @@
 import ParkingService from "./ParkingService";
-import { CarModel } from "../models/CarModel";
+import { CarModel, createCar } from "../models/CarModel";
 import { DriverModel } from "../models/DriverModel";
 import { ReportModel } from "../models/ReportModel";
 import { NotificationDataModel } from "../models/NotificationDataModel";
@@ -47,12 +47,19 @@ export default class ParkingServiceArrays implements ParkingService {
     }
     updateCar(carNumber: number, driverId: number): String {
         let res = `car with number: ${carNumber} not exist`;
-        let car = this.cars.get(carNumber);
-        if(car !== undefined){
-            car.driverId = driverId;
-            this.cars.set(carNumber, car);
+        if (this.cars.has(carNumber)) {
+            //const car = this.cars.get(carNumber);
+            const updatedCar = createCar(carNumber, driverId);
+            //{ ...car, driverId }; // Create a new CarModel object with updated driverId
+            this.cars.set(carNumber, updatedCar);
             res = `car with number: ${carNumber} was updated`;
-        }
+          }
+        // let car = this.cars.get(carNumber);
+        // if(car !== undefined){
+        //     car.driverId = driverId;
+        //     this.cars.set(carNumber, car);
+        //     res = `car with number: ${carNumber} was updated`;
+        // }
         return res;
     }
     updateDriver(driverId: number, email: String): String {
