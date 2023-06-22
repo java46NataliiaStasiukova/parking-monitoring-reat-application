@@ -20,6 +20,7 @@ const Navigator: React.FC<{items: RouteTypes[]}> = ({items}) => {
         {getTabs()}
 
 
+
     </Tabs></AppBar>
 }
     
