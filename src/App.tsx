@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Navigator from './components/navigators/Navigator';
+import { ROUTES } from './config/routes-config';
+import { useImitator } from './util/useImitator';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+
+  const App: React.FC = () => {
+
+    useImitator();
+
+    const [flNavigate, setFlNavigate] = React.useState<boolean>(true);
+    React.useEffect(() => setFlNavigate(false), [])
+    return (
+      <BrowserRouter>
+      <Navigator items={ROUTES} />
+      <Routes>
+        {getRoutes()}
+      </Routes> 
+      </BrowserRouter>
+    );
+  }
 
 export default App;
+
+function getRoutes(): React.ReactNode {
+  return ROUTES.map(r => <Route key={r.path} path={r.path} element={r.element}/>)
+}

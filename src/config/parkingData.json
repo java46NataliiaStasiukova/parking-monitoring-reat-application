@@ -1,0 +1,7 @@
+{
+    "zones": ["1", "2", "3"],
+    "city": ["Bat Yam", "Tel Aviv", "Ramat Gan", "Rehovit", "Holon"],
+    "address": ["Yerushalaim", "Hayarkon", "Rav Uziel", "Mendeli", "Ben Gurion", "Herzel"],
+    "minCost": 250.0,
+    "maxCost": 950.0
+}
