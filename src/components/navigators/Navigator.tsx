@@ -19,6 +19,7 @@ const Navigator: React.FC<{items: RouteTypes[]}> = ({items}) => {
     return <AppBar position={'fixed'}><Tabs indicatorColor='secondary' value={tabNumber} >
         {getTabs()}
 
+
     </Tabs></AppBar>
 }
     
