@@ -1,20 +1,20 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navigator from './components/navigators/Navigator';
-import { ROUTES } from './config/routes-config';
+import { ACCOUNTS_ROUTES, HOME_PAGE_ROUTES, ROUTES, STATISTICS_ROUTES } from './config/routes-config';
 import { useImitator } from './util/useImitator';
 
 
 
   const App: React.FC = () => {
 
-    useImitator();
+    //useImitator();
 
     const [flNavigate, setFlNavigate] = React.useState<boolean>(true);
     React.useEffect(() => setFlNavigate(false), [])
     return (
       <BrowserRouter>
-      <Navigator items={ROUTES} />
+      <Navigator items={ROUTES} accountItems={ACCOUNTS_ROUTES} statisticsItems={STATISTICS_ROUTES} homePageItems={HOME_PAGE_ROUTES}/>
       <Routes>
         {getRoutes()}
       </Routes> 
