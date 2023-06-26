@@ -1,11 +1,10 @@
+import { Box } from "@mui/material";
 import React from "react";
 
 const FindParkingDataPage: React.FC = () => {
 
 
-    return <>
-    <div>Find Parking Data Page</div>
-    </>
+    return <Box sx={{paddingTop: '20vh'}}>Find Parking Data Page</Box>
 }
 
 export default FindParkingDataPage;

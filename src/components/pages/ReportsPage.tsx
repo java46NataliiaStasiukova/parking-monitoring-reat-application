@@ -24,7 +24,7 @@ const ReportsPage: React.FC = () => {
     const getRowId = (row: ReportModel) => row.id;
 
     return (
-        <Box sx={{ height: '100%', width: '100%', paddingTop: '10vh'}} >
+        <Box sx={{ height: '100%', width: '100%', paddingTop: '20vh'}} >
         <DataGrid
           rows={rows}
           columns={columns}

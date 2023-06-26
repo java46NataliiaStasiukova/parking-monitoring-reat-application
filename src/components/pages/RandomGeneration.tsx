@@ -54,7 +54,7 @@ const RandomGeneration: React.FC = () => {
     })
 
     return <>
-    <Box sx={{paddingTop: '10vh'}}>Random Generation Page
+    <Box sx={{paddingTop: '20vh'}}>Random Generation Page
         <input id={INPUT_GENERATION_ID} type="number" />
         <select id={SELECT_GENERATION_ID} name="destination">
         {options.map((o, i)=> <option value={o} key={i}>{o}</option>)}

@@ -1,4 +1,5 @@
-import { RouteTypes } from "../models/RouteTypes";
+import { NestedRouteTypes } from "../models/NestedRouteTypes";
+
 
 export function range (minInclusive: number, maxExclusive: number): number[] {
     const res: number[] = [];
@@ -8,10 +9,11 @@ export function range (minInclusive: number, maxExclusive: number): number[] {
     return res;
 }
 
-export function getRouteIndex(items: RouteTypes[], pathname: string): number {
-    let index =  items.findIndex(item => item.path === pathname);
+export function getRouteIndex(items: NestedRouteTypes[], pathname: string): number {
+    let index = items.findIndex(item => item.path === pathname);
+
     if (index < 0) {
-        index = 0;
+        index = items.findIndex(item => pathname.includes(item.path));
     }
-    return index;
+    return index < 0 ? 0 : index;
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navigator from './components/navigators/Navigator';
-import { ACCOUNTS_ROUTES, HOME_PAGE_ROUTES, ROUTES, STATISTICS_ROUTES } from './config/routes-config';
+import { NESTED_ROUTES } from './config/routes-config';
 import { useImitator } from './util/useImitator';
+import { NestedRouteTypes } from './models/NestedRouteTypes';
 
 
 
@@ -14,7 +15,7 @@ import { useImitator } from './util/useImitator';
     React.useEffect(() => setFlNavigate(false), [])
     return (
       <BrowserRouter>
-      <Navigator items={ROUTES} accountItems={ACCOUNTS_ROUTES} statisticsItems={STATISTICS_ROUTES} homePageItems={HOME_PAGE_ROUTES}/>
+      <Navigator items={NESTED_ROUTES} />
       <Routes>
         {getRoutes()}
       </Routes> 
@@ -25,5 +26,15 @@ import { useImitator } from './util/useImitator';
 export default App;
 
 function getRoutes(): React.ReactNode {
-  return ROUTES.map(r => <Route key={r.path} path={r.path} element={r.element}/>)
+  
+  return NESTED_ROUTES.map(r => {
+    if(r.nestedItems){
+      return getNestedRoutes(r.nestedItems);
+    }
+    return <Route key={r.path} path={r.path} element={r.element}/>
+  })
+}
+
+function getNestedRoutes(nestedRoutes: NestedRouteTypes[]): React.ReactNode {
+  return nestedRoutes.map(r => <Route key={r.path} path={r.path} element={r.element}/>)
 }

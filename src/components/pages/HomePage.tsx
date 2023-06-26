@@ -1,13 +1,9 @@
 import React from "react";
-import { useImitator } from "../../util/useImitator";
+import { Box } from "@mui/material";
 
 const HomePage: React.FC = () => {
 
-    //TOFIX - should be in App.tsx
-    useImitator();
-
-    return <><div>Home Page</div>
-    </>
+    return <Box sx={{paddingTop: '20vh'}}>Home Page</Box>
 }
 
 export default HomePage;

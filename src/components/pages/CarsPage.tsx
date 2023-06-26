@@ -17,7 +17,7 @@ const CarsPage: React.FC = () => {
     const getRowId = (row: CarModel) => row.carNumber;
 
     return (
-        <Box sx={{ height: '100%', width: '100%', paddingTop: '10vh'}} >
+        <Box sx={{ height: '100%', width: '100%', paddingTop: '20vh'}} >
         <DataGrid
           rows={rows}
           columns={columns}

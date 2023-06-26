@@ -1,11 +1,10 @@
+import { Box } from "@mui/material";
 import React from "react";
 
 const LogoutPage: React.FC = () => {
 
 
-    return <>
-    <div>Logout Page</div>
-    </>
+    return <Box sx={{paddingTop: '20vh'}}>Logout Page</Box>
 }
 
 export default LogoutPage;

@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { ParkingZoneModel } from "../../models/ParkingZoneModel";
 import { ParkingZonesType } from "../../redux/store";
-import { getRandomNumber } from "../../util/random";
 import { Box } from "@mui/material";
 import { GridColDef, DataGrid } from "@mui/x-data-grid";
 
@@ -21,7 +20,7 @@ const ParkingZonePage: React.FC = () => {
     const getRowId = (row: ParkingZoneModel) => +row.parkingZone;
 
     return (
-        <Box sx={{ height: '100%', width: '100%', paddingTop: '10vh'}} >
+        <Box sx={{ height: '100%', width: '100%', paddingTop: '20vh'}} >
         <DataGrid
           rows={rows}
           columns={columns}

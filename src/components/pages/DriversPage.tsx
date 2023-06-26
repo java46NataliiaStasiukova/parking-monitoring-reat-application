@@ -19,7 +19,7 @@ const DriversPage: React.FC = () => {
     const getRowId = (row: DriverModel) => row.id;
     
     return (
-        <Box sx={{ height: '100%', width: '100%', paddingTop: '10vh'}} >
+        <Box sx={{ height: '100%', width: '100%', paddingTop: '20vh'}} >
         <DataGrid
           rows={rows}
           columns={columns}

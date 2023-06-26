@@ -1,11 +1,11 @@
+import { Box } from "@mui/material";
 import React from "react";
 
 const AccountsPage: React.FC = () => {
 
 
-    return <>
-    <div>Accounts Page</div>
-    </>
+    return <Box sx={{paddingTop: '20vh'}}>Accounts Page</Box>
+    
 }
 
 export default AccountsPage;
