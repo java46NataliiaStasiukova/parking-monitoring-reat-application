@@ -1,3 +1,4 @@
+
 type ConfirmationData = {
     title: String;
     content: String;

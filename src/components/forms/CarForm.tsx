@@ -1,4 +1,4 @@
-import { Button, FormControl, Grid, TextField } from "@mui/material"
+import { Button, FormControl, Grid, TextField, Typography } from "@mui/material"
 import { Box } from "@mui/system"
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
@@ -7,12 +7,18 @@ import React from "react";
 
 type Props = {
     submitFn: (car: CarModel) => void;
+    carUpdate?: CarModel;
 }
+
 const initialCar: CarModel = createCar(0, 0);
 
-const CarForm: React.FC<Props> = ({submitFn}) => {
-    const [car, setCar] = React.useState(initialCar);
+const CarForm: React.FC<Props> = ({submitFn, carUpdate}) => {  
+    if(!!carUpdate){
+        carUpdate.driverId = 0;
+    }
 
+    const [car, setCar] = React.useState(carUpdate || initialCar);
+    
     function handlerCarNumber(event: any){
         const carCopy = {...car};
         carCopy.carNumber = +event.target.value;
@@ -36,7 +42,10 @@ const CarForm: React.FC<Props> = ({submitFn}) => {
     }
 
 
-    return (
+    return (<Box>
+        <Typography gutterBottom variant={'h4'}
+         sx={{fontSize: {xs: "1.3em", sm: "1em", md:"2em"}, textAlign: 'center', fontWeight: 'bold'}}>
+             {!!carUpdate ? `Updating Car with number ${carUpdate.carNumber}` : 'Adding new Car'}</Typography>
         <Box
         component="form"
         sx={{
@@ -53,9 +62,9 @@ const CarForm: React.FC<Props> = ({submitFn}) => {
                             required
                             id="car-number-field"
                             label="Required"
-                            value={car.carNumber}
+                            value={!!carUpdate ? carUpdate.carNumber : car.carNumber}
                             onChange={handlerCarNumber}
-                            helperText="Enter car number using 6 digits"
+                            helperText={!!carUpdate ? "" : "Enter car number using 6 digits"}
                             />
                     </Grid>
                     <Grid item>
@@ -65,7 +74,7 @@ const CarForm: React.FC<Props> = ({submitFn}) => {
                             label="Required"
                             value={car.driverId}
                             onChange={handlerDriverId}
-                            helperText="Enter id using 6 digits"
+                            helperText="Enter driver id using 6 digits"
                             />
                     </Grid>
                     </FormControl>
@@ -80,6 +89,7 @@ const CarForm: React.FC<Props> = ({submitFn}) => {
                     
    
             </Grid>
+      </Box>
       </Box>
     );
 }

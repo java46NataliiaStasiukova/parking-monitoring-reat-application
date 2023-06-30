@@ -19,30 +19,23 @@ import { NestedRouteTypes } from "../models/NestedRouteTypes";
 
 
 
-export const HOME_PAGE_PATH = '/home';
-
+export const HOME_PAGE_PATH = '/';
 export const MY_PROFILE_PATH = '/profile';
 export const UPDATE_PROFILE_PATH = '/profile/update';
 export const PROFILE_REPORTS_PATH = '/profile/reports'
-
 export const PANGO_PAGE_PATH = '/pango';
-
 export const ACCOUNTS_PATH = '/accounts';
 export const FIND_ACCOUNT_PATH = 'accounts/find';
-
 export const FIND_PARKING_DATA_PATH = '/parking';
 export const CARS_PATH ='/parking/cars';
 export const DRIVERS_PATH = '/parking/drivers';
 export const REPORTS_PATH = '/parking/reports';
-
 export const PARKING_ZONES = '/zones';
 export const RANDOM_GENERATION = '/random-generation';
 export const LOGIN_PATH = '/login';
 export const LOGOUT_PATH = '/logout';
 export const SIGN_IN_PATH = '/signin';
 export const ERROR_PATH = '*';
-
-
 
 export const NESTED_ROUTES:NestedRouteTypes[] = [
     {path: HOME_PAGE_PATH, label: 'Home Page', element:<HomePage/>},
@@ -55,7 +48,7 @@ export const NESTED_ROUTES:NestedRouteTypes[] = [
         {path: ACCOUNTS_PATH, label: 'Accounts', element: <AccountsPage/>},
         {path: FIND_ACCOUNT_PATH, label: 'Find Accounts', element: <FindAccountsPage/>}
     ]},
-    {path: FIND_PARKING_DATA_PATH , label: 'Find', element: <FindParkingDataPage/>, nestedItems: [
+    {path: FIND_PARKING_DATA_PATH , label: 'Find >', element: <FindParkingDataPage/>, nestedItems: [
         {path: FIND_PARKING_DATA_PATH, label: 'Find', element: <FindParkingDataPage/>},
         {path: CARS_PATH, label: 'Cars', element: <CarsPage/>},
         {path: DRIVERS_PATH, label: 'Drivers', element: <DriversPage/>},

@@ -9,7 +9,7 @@ import { NestedRouteTypes } from './models/NestedRouteTypes';
 
   const App: React.FC = () => {
 
-    //useImitator();
+    useImitator();
 
     const [flNavigate, setFlNavigate] = React.useState<boolean>(true);
     React.useEffect(() => setFlNavigate(false), [])

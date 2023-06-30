@@ -13,7 +13,7 @@ export function getRouteIndex(items: NestedRouteTypes[], pathname: string): numb
     let index = items.findIndex(item => item.path === pathname);
 
     if (index < 0) {
-        index = items.findIndex(item => pathname.includes(item.path));
+        index = items.slice(1).findIndex(item => pathname.includes(item.path)) + 1;
     }
     return index < 0 ? 0 : index;
 }
